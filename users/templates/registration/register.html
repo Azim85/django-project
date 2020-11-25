@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+
+{% block css %}{% endblock css %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row w-100 mx-0 justify-content-center">
+        <div class="rounded shadow-lg p-3 d-flex flex-column">
+            <form method="post" action="{% url 'users:register' %}" class="text-white">
+                {% csrf_token %}
+                <p class="text-center text-uppercase font-weight-bold" style="font-size:20px">Registration</p>
+                {{form.as_p}}
+
+                <button name="submit" class="btn btn-success">Register</button>
+                <input type="hidden" name="next" value="{% url 'main:index' %}"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
+
+{% block js %}
+
+
+
+{% endblock js %}

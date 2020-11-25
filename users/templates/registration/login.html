@@ -1,0 +1,41 @@
+{% extends 'main/layout.html' %}
+
+{% block css %}{% endblock css %}
+
+{% block content %}
+
+{% if form.errors %}
+    <div class="container mt-5">
+        <div class="alert alert-danger text-center" role="alert">
+            <p class="text-white text-danger font-weight-bold">Your user name and password didn't match. Please try again</p>
+        </div>
+    </div>
+{% endif %}
+
+    <div class="row mt-5 jujtify-content-center w-100 mx-0">
+        <div class="w-100 d-flex justify-content-center">
+            <div class="shadow-lg px-5 py-2 rounded d-flex flex-column">
+                <p class="text-white text-center font-weight-bold text-uppercase">Login:User</p>
+                <form method="post" action="{% url 'users:login' %}" class="text-white">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                
+                    <button name="submit" class="btn btn-success">Log in</button>
+                    <input type="hidden" name="next" value="{% url 'main:index' %}" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+
+
+
+
+{% block js %}
+
+
+
+{% endblock js %}

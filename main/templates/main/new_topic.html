@@ -1,0 +1,30 @@
+{% extends 'main/layout.html' %}
+
+{% block css %}{% endblock css %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-3 mt-5 p-5 shadow-lg">
+            <form action="{% url 'main:new_topic' %}" method="post" class="text-white d-flex flex-column">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="add" class="btn btn-success px-5 ml-auto"/>
+            
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
+
+{% block js %}
+
+
+
+{% endblock js %}

@@ -1,0 +1,20 @@
+body{
+    background: rgb(49, 59, 70);
+}
+
+.navbar-toggler-icon{
+    border:1px solid grey;
+    border-radius:5px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    outline:none;
+}
+
+.navbar-toggler-icon span{
+    width:20px;
+    height:1px;
+    border:1px solid grey;
+    margin:2px 2px;
+}

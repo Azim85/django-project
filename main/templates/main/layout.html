@@ -1,0 +1,88 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="{% static  'main/bootstrap/css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'main/style.css' %}">
+    {% block css %}{% endblock css %}
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg mt-3">
+        <a class="navbar-brand" href="#">DEV<strong class="text-warning">PORTAL</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon">
+              <span></span>
+              <span></span>
+              <span></span>
+          </span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'main:index' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'main:news' %}">Topics</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+            <ul class="navbar-nav">
+               
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <p class="text-white pt-2 mx-2">Hello {{user.username}}</p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link log_out" href="{% url 'users:logout' %}">Log out</a>
+                </li>
+                {% else %}
+                <li class="nav-item d-flex">
+                    <a class="nav-link" href="{% url 'users:register' %}">Register</a>
+                    <a class="nav-link" href="{% url 'users:login' %}">Log in</a>
+                </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </nav>
+
+    {% block content %}{% endblock content %}
+
+
+
+    <script src="{% static 'main/jquery-3.5.1.js' %}"></script>
+    <script scr="{% static 'main/bootstrap/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'main/bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static 'main/main.js' %}"></script>
+    <script>
+        $('.log_out').click(function(){
+            alert('Are you sure?')
+        })
+    </script>
+    {% block js %}{% endblock js %}
+</body>
+</html>
